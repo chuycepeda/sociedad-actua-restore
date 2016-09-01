@@ -9,9 +9,9 @@
   margin-bottom: 30px;
   background-color: #FECD36;
 
-  height: 350px;
-  min-height: 350px;
-  max-height: 350px;
+  height: 300px;
+  min-height: 300px;
+  max-height: 300px;
 
   label {
     color: $blue_800;
@@ -20,6 +20,7 @@
 
   .title {
     margin-bottom: 0px;
+    margin-top: 10px;
     color: $blue_800;
   }
 

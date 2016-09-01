@@ -1,4 +1,20 @@
 - content_for :landing do
+  %nav.sub-navbar.navbar.navbar-default
+    .container
+      #navbar.sub-navbar
+        %ul.nav.navbar-nav
+          %li.boldest= link_to 'Explorar', root_path, class: 'navbar-brand'
+          %li= link_to 'Organizaciones', organizations_path
+          %li= link_to 'Proyectos', projects_list_path
+          %li= link_to 'Inversionistas', investors_path
+
+        = form_tag(projects_list_path, method: :get, class: 'navbar-form navbar-left') do
+          .inner-addon.right-addon
+            = text_field_tag(:q, nil, class: 'form-control inline', placeholder: "Buscar proyectos que están cambiando mi entorno...")
+            %i{:class  => "glyphicon glyphicon-search "}
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to 'Ver Mapa', root_path(anchor: 'map')
+
   #video.content-video
     = video_tag 'https://s3.amazonaws.com/sociedad-actua-production/SA-C.mp4',
     class: 'video', width: '100%', autoplay: true, muted: true, loop: true
@@ -7,16 +23,16 @@
       %p.content__desc
         el lugar de encuentro entre personas, organizaciones, y proyectos
 
-  .search-box-bar
-    .container
-      = form_tag(projects_list_path, method: :get, class: '') do
-        .inner-addon.left-addon
-          %i{:class  => "glyphicon glyphicon-search"}
-          = text_field_tag(:q, nil, class: 'search-box', placeholder: "Busca proyectos por nombre, organización, descripción ó causas", maxlength: 50, autocomplete: "off")
+  / .search-box-bar
+  /   .container
+  /     = form_tag(projects_list_path, method: :get, class: '') do
+  /       .inner-addon.left-addon
+  /         %i{:class  => "glyphicon glyphicon-search"}
+  /         = text_field_tag(:q, nil, class: 'search-box', placeholder: "Busca proyectos por nombre, organización, descripción ó causas", maxlength: 50, autocomplete: "off")
 
 
 #explore.row.text-center
-  %h1 Descubre
+  %h1 Descubre a la sociedad que ya está actuando
 
   .row
     .col-xs-12.col-sm-4.text-center
