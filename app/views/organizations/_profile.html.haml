@@ -71,7 +71,7 @@
         
         .navbar-text-blanco
           - if current_user.present? 
-            -if current_user.profile_type == "Collaborator"
+            -if current_user.profile_type == "Collaborator" or current_user.profile_type == "Organization"
               
               %a-verde.m{"data-target" => "#myModalDialog", "data-toggle" => "modal", :href => ""}
                 %a.btn.btn-default= "Contactar"
