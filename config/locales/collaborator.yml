@@ -26,6 +26,8 @@ es:
               invalid: El url proporcionado no es válido.
             twitter_url:
               invalid: El url proporcionado no es válido.
+            type_collaborator:
+              blank: Este campo no puede estar vacío.
 
   collaborator:
     show:

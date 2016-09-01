@@ -1,7 +1,8 @@
 class Project < ActiveRecord::Base
+	validates_presence_of :name, :email, :goals, :description, :causes_interest
 	belongs_to :organization
 	serialize :causes_interest, Array
-  serialize :clasification, Array
+  	serialize :clasification, Array
 	serialize :collaborators, Array
 	mount_uploader :photo_project, LogoUploader
 	before_save :validate_causes

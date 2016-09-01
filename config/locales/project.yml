@@ -12,6 +12,18 @@ es:
               taken: Este nombre ya está dado de alta.
             description:
               blank: Este campo no puede estar vacío.
+        project:
+          attributes:
+            email:
+              blank: Este campo no puede estar vacío.
+              taken: Este correo ya está siendo utilizado.
+            name:
+              blank: Este campo no puede estar vacío.
+              taken: Este nombre ya está dado de alta.
+            description:
+              blank: Este campo no puede estar vacío.
+            goals:
+              blank: Este campo no puede estar vacío.
 
   projects:
     form:

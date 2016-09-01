@@ -89,35 +89,36 @@
           .row
             .col-md-6
               %p.big-ass.bright Encuentra
-              %p.bright Encuentra proyectos por ubicación geográfica
+              %p.bright Busca proyectos por ubicación geográfica           
             .col-md-6.text.right
               =f.input :name, collection: @projects, include_black: false,input_html: { "data-placeholder"=> I18n.t('simple_form.placeholders.search'), class: "chosen-select ", tabindex: "2", :onchange=>"show_marker();"}, :label =>false, :required => false
 
-
-      =f.label I18n.t('simple_form.placeholders.fields'), class: "yellow", :required => false
-      .yellow.glyphicon.glyphicon-chevron-down{:data => {:toggle => 'collapse', :target => '.avanzada'}}
-      .row.avanzada.panel-collapse.collapse{"aria-labelledby" => "headingOne", :role => "tabpanel"}
-        .col-md-1
-        .col-md-3
-          =f.label I18n.t('simple_form.placeholders.search_city'), class: "bright", :required => false
-          =f.input :city, collection: CITIES, include_black: false,input_html: { "data-placeholder"=> I18n.t('simple_form.placeholders.organization.city'), class: "chosen-select", tabindex: "2"  }, label: false, :required => false
-        .col-md-2
-          =f.label I18n.t('simple_form.placeholders.search_ageb'), class: "bright", :required => false
-          =f.input :ageb, :label =>false, :required => false
-        .col-md-2
-          =f.label I18n.t('simple_form.placeholders.search_distrito'), class: "bright", :required => false
-          =f.input :distrito, :label =>false , :required => false
-        .col-md-2
-          =f.label I18n.t('simple_form.placeholders.search_seccion'), class: "bright", :required => false
-          =f.input :seccion, :label =>false , :required => false
-        .col-md-1.margin-top-button.text-right
-          = f.button :submit, "buscar"
+      .row
+        .col-md-11.col-md-offset-1
+          =f.label I18n.t('simple_form.placeholders.fields'), class: "yellow", :required => false
+          .yellow.glyphicon.glyphicon-chevron-down{:data => {:toggle => 'collapse', :target => '.avanzada'}}
+          .row.avanzada.panel-collapse.collapse{"aria-labelledby" => "headingOne", :role => "tabpanel"}
+            .col-md-1
+            .col-md-3
+              =f.label I18n.t('simple_form.placeholders.search_city'), class: "bright", :required => false
+              =f.input :city, collection: CITIES, include_black: false,input_html: { "data-placeholder"=> I18n.t('simple_form.placeholders.organization.city'), class: "chosen-select", tabindex: "2"  }, label: false, :required => false
+            .col-md-2
+              =f.label I18n.t('simple_form.placeholders.search_ageb'), class: "bright", :required => false
+              =f.input :ageb, :label =>false, :required => false
+            .col-md-2
+              =f.label I18n.t('simple_form.placeholders.search_distrito'), class: "bright", :required => false
+              =f.input :distrito, :label =>false , :required => false
+            .col-md-2
+              =f.label I18n.t('simple_form.placeholders.search_seccion'), class: "bright", :required => false
+              =f.input :seccion, :label =>false , :required => false
+            .col-md-1.margin-top-button.text-right
+              = f.button :submit, "buscar"
     %div{:id=>"geolocation", :style=>'width: 100%; height: 400px;'}
     .row
-      .col-md-2.padding-text-map
-        = link_to "ver listado", projects_list_path, :class=>"btn btn-secondary"
-      .col-md-10.text-right.padding-text-map
-        = link_to "descargar proyectos", download_csv_project_visitors_path(format: :csv),:class=>"btn btn-secondary"
+      .col-md-12.text-right.padding-text-map
+        = link_to "ver listado", projects_list_path, :class=>"btn btn-secondary", :style=>"margin-right:8px;"
+    /   .col-md-10.text-right.padding-text-map
+    /     = link_to "descargar proyectos", download_csv_project_visitors_path(format: :csv),:class=>"btn btn-secondary"
 
 - if @organizations.count >= 4
   #showcase.row
@@ -133,25 +134,28 @@
 :javascript
   $(document).ready(loadMapLanding);
   var markersArray = [];
+  var markers;
   //mostramos en el mapa la ubicacion del usuario
     function centerOnMap(position){
-      var markers = JSON.parse('#{raw(@markers.to_json)}');
-       for(i=0; i< markers.length; i++){
-        if(markers[i]["status"] === 'active'){
-          marker = handler.addMarker({
-            lat: markers[i]["lat"],
-            lng: markers[i]["lng"],
-            infowindow: "<a href=" + markers[i]["url"] + ">Proyecto: " + markers[i]["name"] + "</a>",
-            title:  markers[i]["name"]
-          });
-          markersArray.push(marker);
-        }
-      }
-      if(markers[0]["lat"]+"" == ""){
-        handler.map.centerOn(["25.6754382","-100.3483728"]);
-      }else{
-        handler.map.centerOn([markers[markers.length-1]["lat"],markers[markers.length-1]["lng"]]);
-      }
+        markers = JSON.parse('#{raw(@markers.to_json)}');
+        // markers = JSON.parse('[{"lat":25.6780368,"lng":-100.3133067,"name":"","id":43,"url":"/es/organizaciones/49/proyectos/43","status":"active"},{"lat":25.670276,"lng":-100.3052854,"name":"Acción de la Semana #YOSOYPAZ","id":40,"url":"/es/organizaciones/15/proyectos/40","status":"active"},{"lat":25.6676192,"lng":-100.3466004,"name":"A FORMAR PERSONAS MEJORES Y MÁS FELICES","id":36,"url":"/es/organizaciones/34/proyectos/36","status":"active"},{"lat":25.6497515,"lng":-100.3715458,"name":"APES Parkour Facilities","id":24,"url":"/es/organizaciones/25/proyectos/24","status":"active"},{"lat":25.6542625,"lng":-100.2978762,"name":"Apoyo Asistencial a Familias en Situación de Vulnerabilidad","id":4,"url":"/es/organizaciones/9/proyectos/4","status":"active"},{"lat":25.6945823,"lng":-100.3396828,"name":"Becas Asistenciales","id":42,"url":"/es/organizaciones/43/proyectos/42","status":"active"},{"lat":25.666274,"lng":-100.2620616,"name":"Becas de Asistencia para Adultos Mayores","id":59,"url":"/es/organizaciones/66/proyectos/59","status":"active"},{"lat":25.6550944177298,"lng":-100.392654601825,"name":"Campaña Regreso a Clases, Zona Escolar Segura","id":33,"url":"/es/organizaciones/37/proyectos/33","status":"active"},{"lat":31.3287024,"lng":-109.5317716,"name":"Centro de Inteligencia Vecinal","id":2,"url":"/es/organizaciones/5/proyectos/2","status":"active"},{"lat":25.6506168043191,"lng":-100.382661774205,"name":"Centros de Pensamiento ","id":5,"url":"/es/organizaciones/11/proyectos/5","status":"active"}]')
 
-      handler.getMap().setZoom(10);
-  }
+         for(i=0; i< markers.length; i++){
+          if(markers[i]["status"] === 'active'){
+            marker = handler.addMarker({
+              lat: markers[i]["lat"],
+              lng: markers[i]["lng"],
+              infowindow: "<a href=" + markers[i]["url"] + ">Proyecto: " + markers[i]["name"] + "</a>",
+              title:  markers[i]["name"]
+            });
+            markersArray.push(marker);
+          }
+        }
+        if(markers[0]["lat"]+"" == ""){
+          handler.map.centerOn(["25.6754382","-100.3483728"]);
+        }else{
+          handler.map.centerOn([markers[markers.length-1]["lat"],markers[markers.length-1]["lng"]]);
+        }
+
+        handler.getMap().setZoom(10);
+    }

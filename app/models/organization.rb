@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class Organization < ActiveRecord::Base
+  #validates_presence_of :name, :mision, :telephone, :email
   serialize :causes_interest, Array
   serialize :supports, Array
   before_save :validate_causes
@@ -9,7 +10,7 @@ class Organization < ActiveRecord::Base
   has_many :events
   mount_uploader :logo, LogoUploader
 
-  validates :name, :type_organization, :email, presence:  true, on: :update
+  validates :name, :type_organization, :email, presence: true, on: :update
   validates :email, :uniqueness => true
   validates :name, :length => { :minimum => 2 },if: Proc.new { |a| a.name.present? }
   validates :mision, :length => { :maximum => 500 },presence:  true, on: :update, allow_blank: false
@@ -18,7 +19,7 @@ class Organization < ActiveRecord::Base
 
   validates :foundation, :inclusion =>  { :in => 1900..2040 }, presence: true
 
-  validates :address, :colonia, :town, presence:  true, on: :update
+  # validates :address, :colonia, :town, presence:  true, on: :update
 
   # TODO: validar formato de correo
   # validates :email,

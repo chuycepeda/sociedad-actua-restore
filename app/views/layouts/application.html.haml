@@ -6,7 +6,7 @@
     %title= content_for?(:title) ? yield(:title) : "Sociedad Actua"
     %meta{:content => "#{content_for?(:description) ? yield(:description) : "Sociedad Actúa"}", :name => "description"}/
     %link{:href => "https://fonts.googleapis.com/css?family=Dosis:400,500,700", :rel => "stylesheet", :type => "text/css"}/
-    %script{:src => "//maps.google.com/maps/api/js?v=3.23", :type => "text/javascript"}
+    %script{:src => "//maps.google.com/maps/api/js?v=3.23&key=AIzaSyAI-EPeYmj7jAYxair_aLYp-6WKPU5_K2M", :type => "text/javascript"}
     %script{:src => "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js", :type => "text/javascript"}
     = favicon_link_tag 'favicon.ico'
     = stylesheet_link_tag 'application', media: 'all'

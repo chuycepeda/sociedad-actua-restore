@@ -7,10 +7,11 @@ var markersArray = [];
       infowindow = new google.maps.InfoWindow();
       handler.buildMap({ provider: { scrollwheel: false}, internal: {id: 'geolocation'} }, function(){
         geocoder = new google.maps.Geocoder();
-        if(navigator.geolocation){
-          navigator.geolocation.getCurrentPosition(centerOnMap);
+        // if(navigator.geolocation){
+        //   navigator.geolocation.getCurrentPosition(centerOnMap);
  
-        }  
+        // } 
+        centerOnMap();
       });
     }
 

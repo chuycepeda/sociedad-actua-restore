@@ -3,7 +3,7 @@ class Collaborator < ActiveRecord::Base
   before_save :validate_causes
   mount_uploader :logo, LogoUploader
 
-  validates :email, :type_collaborator, :description, presence:  true, on: :update
+  validates :name, :email, :type_collaborator, :description, presence:  true, on: :update
   validates :email, uniqueness: true
 
   validates :name, :length => { :minimum => 2 },if: Proc.new { |a| a.name.present? }

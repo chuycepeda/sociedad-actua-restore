@@ -1,4 +1,5 @@
 class Investor < ActiveRecord::Base
+  # validates_presence_of :email, :name, :characteristics, :type_investor
   serialize :causes_supported, Array
   serialize :organization, Array
   before_save :validate_causes
@@ -7,7 +8,7 @@ class Investor < ActiveRecord::Base
   has_many :organizations
   mount_uploader :logo, LogoUploader
 
-  validates :name, :type_investor,  presence:  true, on: :update
+  validates :name, :type_investor, :causes_supported, presence:  true, on: :update
 
   validates :name, :length => { :minimum => 2 },if: Proc.new { |a| a.name.present? }
   
