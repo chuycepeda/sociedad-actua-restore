@@ -12,7 +12,7 @@
     = link_to organization_project_path(project.organization, project), class: 'no-decoration' do
       .thumbnail.project-thumb
         .thumb.org-photo
-          =image_tag project.photo_project.mid.url, style: "height:130px;"
+          =image_tag project.photo_project.mid.url, style: ""
         .caption
           %h3.title= truncate(project.name, length: 30)
           %label Organizaci&oacute;n
