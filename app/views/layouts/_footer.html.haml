@@ -38,9 +38,11 @@
       .col-xs-12.col-sm-3
         %p.light-grey Sociedad Act&uacute;a es un proyecto de
       .col-xs-12.col-sm-3
-        = image_tag 'footer/consejo_civico_2x.png', style: 'height:50px;'
+        = link_to 'http://www.consejocivico.org.mx/' do
+          = image_tag 'footer/consejo_civico_2x.png', style: 'height:50px;'
       .col-xs-12.col-sm-3
-        = image_tag 'footer/comunidar_2x.png', style: 'height:50px;'
+        = link_to 'http://www.comunidar.org/' do
+          = image_tag 'footer/comunidar_2x.png', style: 'height:50px;'
       .col-xs-12.col-sm-3
         %a{ rel:"license", href:"http://creativecommons.org/licenses/by-nc-sa/4.0/" }
           %img{alt:"Creative Commons License", style:"border-width:0", src:"https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"}

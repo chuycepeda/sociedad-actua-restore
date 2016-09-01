@@ -37,8 +37,8 @@
 }
 
 .org-photo {
-  height: 200px;
-  background-size: cover;
+  height: 130px;
   text-align: center;
-  margin-top: 8px;
+  overflow: hidden;
+  background-color: white;
 }

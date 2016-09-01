@@ -6,7 +6,7 @@
 
   .showcase__thumbnail {
     &.sh-photo {
-      height: 250px !important;
+      height: 200px !important;
       .photo_container {
         position: relative;
         width: 100%;
@@ -31,8 +31,9 @@
       }
 
       img {
-        max-height: 100%;
         max-width: 100%;
+        height: auto;
+        border-radius: 4px;
       }
     }
   }
@@ -46,9 +47,10 @@
   margin-bottom: 30px;
   background-color: $yellow_800;
 
-  height: 430px;
-  min-height: 430px;
-  max-height: 430px;
+  height: 380px;
+  min-height: 380px;
+  max-height: 380px;
+  overflow-y:scroll;
 
   label {
     color: white;
@@ -61,7 +63,8 @@
 
   .thumb, .caption {
     padding-left: 20px;
-    padding-left: 20px;
+    font-size: 12px!important;
+    margin-top: -12px;
   }
 
   .thumb {

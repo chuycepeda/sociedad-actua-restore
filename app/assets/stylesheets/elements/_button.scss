@@ -14,6 +14,10 @@
   @include button($fourth__accent, white);
 }
 
+.btn-default:hover {
+  background-color:#6BC2F6;
+}
+
 .btn-secondary, .btn-secondary.disabled {
   // @include button($grey_150, $grey_600, red);
   @include button(white, $second__accent,$fourth__accent);

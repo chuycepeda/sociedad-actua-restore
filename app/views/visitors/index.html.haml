@@ -38,39 +38,45 @@
     .col-xs-12.col-sm-4.text-center
       = link_to projects_list_path do
         = image_tag 'roles/proyectos_2x.png', class: 'landing-icon'
-        %h3 Proyectos
+        %br
+        %h3.btn.btn-default Proyectos
       %p Acciones que están realizando individuos, grupos o instituciones para mejorar nuestra sociedad
 
     .col-xs-12.col-sm-4.text-center
       = link_to organizations_path do
         = image_tag 'roles/organizations_2x.png', class: 'landing-icon'
-        %h3 Organizaciones
+        %br
+        %h3.btn.btn-default Organizaciones
       %p Organizaciones legalmente constituidas que ejecutan proyectos
 
     .col-xs-12.col-sm-4.text-center
       = link_to investors_path do
         = image_tag 'roles/investors_2x.png', class: 'landing-icon'
-        %h3 Inversionistas
+        %br
+        %h3.btn.btn-default Inversionistas
       %p Organizaciones y personas interesadas en invertir en los proyectos sociales
 
   .row
     .col-xs-12.col-sm-4.text-center
       = link_to organizations_path(type: "grupos")  do
         = image_tag 'roles/groups_2x.png', class: 'landing-icon'
-        %h3 Grupos
+        %br
+        %h3.btn.btn-default Grupos
       %p Colectivos sin figura jurídica que ejecutan proyectos
 
 
     .col-xs-12.col-sm-4.text-center
       = link_to registration_url(user_type: "collaborator")  do
         = image_tag 'roles/collaborators_2x.png', class: 'landing-icon'
-        %h3 Colaboradores
+        %br
+        %h3.btn.btn-default Colaboradores
       %p Personas interesadas en ayudar en los proyectos sociales
 
     .col-xs-12.col-sm-4.text-center
       = link_to events_list_path  do
         = image_tag 'roles/eventos_grid_2x.png', class: 'landing-icon'
-        %h3 Eventos
+        %br
+        %h3.btn.btn-default Eventos
       %p ¿Quieres saber que está haciendo la comunidad de Sociedad Actúa? !No dejes de ver la sección de eventos!
 
 .row
