@@ -10,7 +10,7 @@
 
         = form_tag(projects_list_path, method: :get, class: 'navbar-form navbar-left') do
           .inner-addon.right-addon
-            = text_field_tag(:q, nil, class: 'form-control inline', placeholder: "Buscar proyectos que están cambiando mi entorno...")
+            = text_field_tag(:q, nil, class: 'form-control inline', placeholder: "Busca proyectos y organizaciones por palabras clave...")
             %i{:class  => "glyphicon glyphicon-search "}
         %ul.nav.navbar-nav.navbar-right
           %li= link_to 'Ver Mapa', root_path(anchor: 'map')
