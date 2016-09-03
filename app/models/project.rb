@@ -29,7 +29,7 @@ class Project < ActiveRecord::Base
 
 		# form query string
 		search_arr.each do |s|
-			query += "projects.name ILIKE '%#{s}%' OR projects.causes_interest ILIKE '%#{s}%' OR projects.other_causes ILIKE '%#{s}%' OR organizations.name ILIKE '%#{s}%' OR "
+			query += "projects.name ILIKE '%#{s}%' OR projects.causes_interest ILIKE '%#{s}%' OR organizations.name ILIKE '%#{s}%' OR "
 			#query += "projects.name ILIKE '%#{s}%' OR projects.description ILIKE '%#{s}%' OR projects.causes_interest ILIKE '%#{s}%' OR projects.other_causes ILIKE '%#{s}%' OR organizations.name ILIKE '%#{s}%' OR "
 		end
 
