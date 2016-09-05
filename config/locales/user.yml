@@ -55,7 +55,7 @@ es:
         password: Contraseña
         password_confirmation: Confirma tu contraseña
         profile_type: Tipo de perfil
-        terms_of_service: "Estoy de acuerdo con las Políticas de Uso"
+        terms_of_service: "Confirmo que mi organización no pertenece a ningún partido político y que estoy de acuerdo con las POLITICAS DE USO"
 
     hints:
       user:

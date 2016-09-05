@@ -50,15 +50,15 @@
           - if @project.website?
             .col-md-6
               %label.social= "Sitio web:"
-              = link_to truncate(@project.website, length: 50), @project.website, target: '_blank', class: 'social-url'
+              = link_to truncate(@project.website, length: 50), "//#{@project.website}", target: '_blank', class: 'social-url'
           - if @project.facebook?
             .col-md-6
               %label= "Facebook:"
-              = link_to truncate(@project.facebook, length: 50), @project.facebook, target: '_blank', class: 'social-url'
+              = link_to truncate(@project.facebook, length: 50), "//#{@project.facebook}", target: '_blank', class: 'social-url'
           - if @project.twitter?
             .col-md-6
               %label= "Twitter:"
-              = link_to truncate(@project.twitter, length: 50), @project.twitter, target: '_blank', class: 'social-url'
+              = link_to truncate(@project.twitter, length: 50), "//#{@project.twitter}", target: '_blank', class: 'social-url'
           -# .col-md-6
           -#   %label= "Instagram:"
           -#    %a.social-url
