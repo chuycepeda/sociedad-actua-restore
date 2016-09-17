@@ -17,9 +17,21 @@ class InvestorsController < ApplicationController
   end
 
   def send_message ()
-    UserMailer.contact_email({ "email" => params["email"], "name" => params["name"],"projects" => params["projects"],"causes" => params["causes"], "comments" => params["comments"], "org_name" => Organization.where("id = (?)", current_user.profile_id ).first["name"], "org_email" => Organization.where("id = (?)", current_user.profile_id ).first["email"] }).deliver
-    authorize @investor
-    redirect_to @investor , notice: "Correo enviado"
+    if current_user.collaborator?
+      UserMailer.contact_email({ "email" => params["email"], "name" => params["name"],"projects" => params["projects"],"causes" => params["causes"], "comments" => params["comments"], "org_name" => Collaborator.where("id = (?)", current_user.profile_id ).first["name"], "org_email" => Collaborator.where("id = (?)", current_user.profile_id ).first["email"] }).deliver
+      authorize @organization
+      redirect_to @organization , notice: "Correo enviado"
+    end
+    if current_user.organization?
+      UserMailer.contact_email({ "email" => params["email"], "name" => params["name"],"projects" => params["projects"],"causes" => params["causes"], "comments" => params["comments"], "org_name" => Organization.where("id = (?)", current_user.profile_id ).first["name"], "org_email" => Organization.where("id = (?)", current_user.profile_id ).first["email"] }).deliver
+      authorize @investor
+      redirect_to @investor , notice: "Correo enviado"
+    end
+    if current_user.investor?
+      UserMailer.contact_email({ "email" => params["email"], "name" => params["name"],"projects" => params["projects"],"causes" => params["causes"], "comments" => params["comments"], "org_name" => Investor.where("id = (?)", current_user.profile_id ).first["name"], "org_email" => Investor.where("id = (?)", current_user.profile_id ).first["email"] }).deliver
+      authorize @investor
+      redirect_to @investor , notice: "Correo enviado"
+    end
   end
   def login()
      

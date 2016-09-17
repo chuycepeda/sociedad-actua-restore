@@ -19,9 +19,21 @@ class OrganizationsController < ApplicationController
   end
 
   def send_message ()
-    UserMailer.contact_org_email({ "email" => params["email"], "name" => params["name"],"projects" => params["projects"],"causes" => params["causes"], "comments" => params["comments"], "collaborator_name" => Collaborator.where("id = (?)", current_user.profile_id ).first["name"], "collaborator_email" => Collaborator.where("id = (?)", current_user.profile_id ).first["email"] }).deliver
-    authorize @organization
-    redirect_to @organization , notice: "Correo enviado"
+    if current_user.collaborator?
+      UserMailer.contact_org_email({ "email" => params["email"], "name" => params["name"],"projects" => params["projects"],"causes" => params["causes"], "comments" => params["comments"], "collaborator_name" => Collaborator.where("id = (?)", current_user.profile_id ).first["name"], "collaborator_email" => Collaborator.where("id = (?)", current_user.profile_id ).first["email"] }).deliver
+      authorize @organization
+      redirect_to @organization , notice: "Correo enviado"
+    end
+    if current_user.organization?
+      UserMailer.contact_org_email({ "email" => params["email"], "name" => params["name"],"projects" => params["projects"],"causes" => params["causes"], "comments" => params["comments"], "collaborator_name" => Organization.where("id = (?)", current_user.profile_id ).first["name"], "collaborator_email" => Organization.where("id = (?)", current_user.profile_id ).first["email"] }).deliver
+      authorize @organization
+      redirect_to @organization , notice: "Correo enviado"
+    end
+    if current_user.investor?
+      UserMailer.contact_org_email({ "email" => params["email"], "name" => params["name"],"projects" => params["projects"],"causes" => params["causes"], "comments" => params["comments"], "collaborator_name" => Investor.where("id = (?)", current_user.profile_id ).first["name"], "collaborator_email" => Investor.where("id = (?)", current_user.profile_id ).first["email"] }).deliver
+      authorize @organization
+      redirect_to @organization , notice: "Correo enviado"
+    end
   end
 
   def login ()

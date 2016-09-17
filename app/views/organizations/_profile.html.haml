@@ -48,21 +48,26 @@
         %hr
 
         .row
-          .col-md-6
-            %label= "Sitio web:"
-            =link_to truncate(@organization.site, length: 50), "//#{@organization.site}", target: "_blank", class: "social-url"
-          .col-md-6
-            %label= "Facebook:"
-            =link_to truncate(@organization.facebook, length: 50), "//#{@organization.facebook}", target: "_blank", class: "social_url"
-          .col-md-6
-            %label= "Twitter:"
-            =link_to truncate(@organization.twitter, length: 50), "//#{@organization.twitter}", target: "_blank", class: "social-url"
-          .col-md-6
-            %label= "Youtube:"
-            =link_to truncate(@organization.youtube, length: 50), "//#{@organization.youtube}", target: "_blank", class: "social-url"
-          .col-md-6
-            %label= "Instagram:"
-            =link_to truncate(@organization.instagram, length: 50), "//#{@organization.instagram}", target: "_blank", class: "social-url"
+          - if @organization.site.length > 5
+            .col-md-6
+              %label= "Sitio web:"
+              =link_to truncate(@organization.site, length: 50), "//#{@organization.site}", target: "_blank", class: "social-url"
+          - if @organization.facebook.length > 5
+            .col-md-6
+              %label= "Facebook:"
+              =link_to truncate(@organization.facebook, length: 50), "//#{@organization.facebook}", target: "_blank", class: "social_url"
+          - if @organization.twitter.length > 5
+            .col-md-6
+              %label= "Twitter:"
+              =link_to truncate(@organization.twitter, length: 50), "//#{@organization.twitter}", target: "_blank", class: "social-url"
+          - if @organization.youtube.length > 5
+            .col-md-6
+              %label= "Youtube:"
+              =link_to truncate(@organization.youtube, length: 50), "//#{@organization.youtube}", target: "_blank", class: "social-url"
+          - if @organization.instagram.length > 5
+            .col-md-6
+              %label= "Instagram:"
+              =link_to truncate(@organization.instagram, length: 50), "//#{@organization.instagram}", target: "_blank", class: "social-url"
 
         %hr
 
@@ -90,7 +95,7 @@
                         .row-fluid
                           .row
                             .col-md-12
-                              %h4 ¿Qué causa lo quieres contactar?
+                              %h4 ¿Qué causa te interesó?
                               = select_tag "causes",options_for_select(@organization.causes_interest), class: "chosen-select"
                           .row
                             .col-md-12
