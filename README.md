@@ -28,6 +28,12 @@ Para configurar las variables de entorno hay dos opciones:
 - Configurarlas desde la vista web de AWS.
 - Hacerlo por CLI: `eb setenv NOMBRE_VARIABLE=SUVALOR`
 
+### Conectando a la RDS usando PGAdmin
+Para conectarse es importante:
+- Imprimir variables de entorno usando: `eb printenv [nombre-entorno]`
+- Identificar los valores de conexión PG (username, password, hostname, db_name, port)
+- Ir a la instancia de RDS y sus Security Group Rules asociados para agregar uno nuevo con nuestra IP
+- Conectarnos desde el PG Admin
 
 ## Licencia
 
